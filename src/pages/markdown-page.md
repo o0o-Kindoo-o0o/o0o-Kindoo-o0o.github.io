@@ -1,7 +1,7 @@
 ---
-title: Markdown page example
+title: Markdown mẫu
 ---
 
 # Markdown page example
 
-You don't need React to write simple standalone pages.
+Bạn không cần React để viết các trang đơn giản.
