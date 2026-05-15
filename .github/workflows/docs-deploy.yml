@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: https://o0o-Kindoo-o0o.github.io/
+      url: https://o0o-kindoo-o0o.github.io/
     steps:
       - name: Deploy
         id: deployment
