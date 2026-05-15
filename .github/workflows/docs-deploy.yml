@@ -4,38 +4,49 @@ on:
   push:
     branches:
       - main
+  # Cho phép chạy thủ công từ tab Actions
+  workflow_dispatch:
 
 permissions:
-  contents: read # Chỉ cần read để lấy code
-  pages: write   # Cần để deploy lên Pages
+  contents: read
+  pages: write
   id-token: write
+
+# Đảm bảo chỉ có một luồng deploy chạy tại một thời điểm
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Bước cài đặt pnpm (SRE nên dùng bản cụ thể để tránh lỗi môi trường)
-      - uses: pnpm/action-setup@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
         with:
-          version: 8 # Hoặc bản bạn đang dùng trên X1 Carbon
+          # Tự động lấy version từ package.json (nếu có) hoặc dùng bản 8
+          version: 8
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile # Tương đương npm ci, đảm bảo đúng file lock
+        # Dùng --frozen-lockfile để đảm bảo môi trường CI giống hệt local X1 Carbon của bạn
+        run: pnpm install --frozen-lockfile
 
       - name: Build website
         run: pnpm run build
 
-      - name: Upload build output
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
@@ -48,6 +59,6 @@ jobs:
       name: github-pages
       url: https://o0o-kindoo-o0o.github.io/
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
