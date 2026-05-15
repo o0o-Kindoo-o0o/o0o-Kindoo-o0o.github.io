@@ -6,8 +6,8 @@ import remarkMarkmap from "./src/plugins/remark-markmap";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "Abenla Odoo docs",
-  tagline: "Welcome to Abenla",
+  title: "Kindoo docs",
+  tagline: "Welcome to Kindoo",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -16,15 +16,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://abenla-devs.github.io",
+  url: "https://o0o-kindoo-o0o.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "abenla-devs", // Usually your GitHub org/user name.
-  projectName: "abenla-devs.github.io", // Usually your repo name.
+  organizationName: "o0o-Kindoo-o0o", // Usually your GitHub org/user name.
+  projectName: "o0o-kindoo-o0o.github.io", // Usually your repo name.
   deploymentBranch: "gh-pages",
   trailingSlash: false,
 
@@ -55,7 +55,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/abenla-devs/abenla-devs.github.io/tree/main/",
+            "https://github.com/o0o-Kindoo-o0o/o0o-Kindoo-o0o.github.io/tree/main/",
         },
         blog: {
           remarkPlugins: [require("remark-math")],
@@ -68,7 +68,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/abenla-devs/abenla-devs.github.io/tree/main/",
+            "https://github.com/o0o-Kindoo-o0o/o0o-Kindoo-o0o.github.io/tree/main/",
 
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
@@ -90,7 +90,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Abenla - Odoo Documentation",
+      title: "Kindoo Documentation",
       logo: {
         alt: "Abenla Logo",
         src: "img/abenla.png",
@@ -104,7 +104,7 @@ const config: Config = {
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/abenla-devs/abenla-devs.github.io",
+          href: "https://github.com/o0o-Kindoo-o0o/o0o-Kindoo-o0o.github.io",
           label: "GitHub",
           position: "right",
         },
