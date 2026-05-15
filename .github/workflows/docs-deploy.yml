@@ -6,8 +6,8 @@ on:
       - main
 
 permissions:
-  contents: write
-  pages: write
+  contents: read # Chỉ cần read để lấy code
+  pages: write   # Cần để deploy lên Pages
   id-token: write
 
 jobs:
@@ -18,13 +18,23 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # Bước cài đặt pnpm (SRE nên dùng bản cụ thể để tránh lỗi môi trường)
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Hoặc bản bạn đang dùng trên X1 Carbon
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-      - run: npm install
-      - run: npm ci
-      - run: npm run build
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Tương đương npm ci, đảm bảo đúng file lock
+
+      - name: Build website
+        run: pnpm run build
+
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
