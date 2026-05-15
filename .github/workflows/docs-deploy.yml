@@ -4,49 +4,29 @@ on:
   push:
     branches:
       - main
-  # Cho phép chạy thủ công từ tab Actions
-  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
-
-# Đảm bảo chỉ có một luồng deploy chạy tại một thời điểm
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          # Tự động lấy version từ package.json (nếu có) hoặc dùng bản 8
-          version: 8
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: npm
 
-      - name: Install dependencies
-        # Dùng --frozen-lockfile để đảm bảo môi trường CI giống hệt local X1 Carbon của bạn
-        run: pnpm install --frozen-lockfile
-
-      - name: Build website
-        run: pnpm run build
-
-      - name: Upload artifact
+      - run: npm install
+      - run: npm ci
+      - run: npm run build
+      - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
@@ -59,6 +39,6 @@ jobs:
       name: github-pages
       url: https://o0o-kindoo-o0o.github.io/
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
