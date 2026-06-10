@@ -144,9 +144,13 @@ Lưu trữ định nghĩa của mọi mã QR trong hệ thống.
   - `batch_id`: Tìm tất cả mã thuộc 1 batch.
 - `access_token` (New): Field bí mật dùng để xác thực quyền chỉnh sửa (nếu cần public API edit).
 
-> [!NOTE] > **Tại sao cần field `current_scans` trong khi đã có bảng Log?**
-> Nếu mỗi lần quét mã, hệ thống phải chạy lệnh "Đếm tất cả các dòng trong bảng Log của mã này" (`SELECT count(*) FROM qr_scan_log WHERE qr_id = ...`) thì sẽ **rất chậm** khi dữ liệu lớn (triệu dòng).
-> Giải pháp tối ưu: Dùng field `current_scans` như một **bộ nhớ đệm (Cache)**. Mỗi lần có lượt quét mới, hệ thống chỉ việc `+1` vào số này. Việc đọc giá trị này là tức thì, giúp kiểm tra giới hạn (`max_scans`) trong mili-giây.
+:::note Tại sao cần field `current_scans` trong khi đã có bảng Log?
+
+Nếu mỗi lần quét mã, hệ thống phải chạy lệnh "Đếm tất cả các dòng trong bảng Log của mã này" (`SELECT count(*) FROM qr_scan_log WHERE qr_id = ...`) thì sẽ **rất chậm** khi dữ liệu lớn (triệu dòng).
+
+Giải pháp tối ưu: Dùng field `current_scans` như một **bộ nhớ đệm (Cache)**. Mỗi lần có lượt quét mới, hệ thống chỉ việc `+1` vào số này. Việc đọc giá trị này là tức thì, giúp kiểm tra giới hạn (`max_scans`) trong mili-giây.
+
+:::
 
 ### 2.2. Bảng `qr.scan.log` (Tracking)
 

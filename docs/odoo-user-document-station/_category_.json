@@ -1,0 +1,8 @@
+{
+  "label": "Odoo User Document Station",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Tài liệu hướng dẫn người dùng các module Odoo tùy chỉnh"
+  }
+}
