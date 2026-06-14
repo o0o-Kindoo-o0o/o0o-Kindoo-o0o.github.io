@@ -90,7 +90,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Kindoo Documentation",
+      title: "Kindoo",
       logo: {
         alt: "Abenla Logo",
         src: "img/abenla.png",
@@ -148,12 +148,12 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/o0o-Kindoo-o0o/o0o-Kindoo-o0o.github.io",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Abenla Corp. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Abenla Ltd. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
