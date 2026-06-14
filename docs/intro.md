@@ -5,7 +5,7 @@ title: Giới thiệu
 
 # Kindoo Documentation
 
-Chào mừng bạn đến với hệ thống tài liệu **Kindoo** — nền tảng Odoo ERP được tùy chỉnh và phát triển bởi **Abenla Ltd**.
+Chào mừng bạn đến với hệ thống tài liệu **Kindoo** — nền tảng Odoo ERP được tùy chỉnh và phát triển bởi **Abenla Co., Ltd**.
 
 ## Cấu trúc tài liệu
 
