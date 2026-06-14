@@ -6,9 +6,13 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -16,16 +20,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - run: npm install
       - run: npm ci
       - run: npm run build
+
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
@@ -37,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: https://o0o-kindoo-o0o.github.io/
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy
         id: deployment

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Mindmap của module
+# Tổng quan CRM module
 
 ```markmap initialExpandLevel=2
 - CRM Features & Analysis

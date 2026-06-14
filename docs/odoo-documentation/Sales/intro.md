@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Mindmap của module
+# Tổng quan Sales module
 
 ```markmap initialExpandLevel=2
 - Sales Modules
