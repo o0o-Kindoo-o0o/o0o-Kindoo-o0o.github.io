@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Mindmap của module
+# Tổng quan Marketing module
 
 ```markmap initialExpandLevel=2
 - Marketing Modules
