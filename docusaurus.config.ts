@@ -7,7 +7,7 @@ import remarkMarkmap from "./src/plugins/remark-markmap";
 
 const config: Config = {
   title: "Kindoo docs",
-  tagline: "Welcome to Kindoo",
+  tagline: "Trang tài liệu chính thức của Kindoo",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -153,14 +153,14 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Abenla Ltd. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Abenla Co., Ltd. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
     mermaid: {
-      theme: {light: 'neutral', dark: 'forest'},
+      theme: { light: "neutral", dark: "forest" },
     },
   } satisfies Preset.ThemeConfig,
 };
